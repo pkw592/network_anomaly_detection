@@ -9,7 +9,7 @@ def capture():
     
     for row in iter(p.stdout.readline, ''):
         x = row.rstrip().split()
-        for l in range(0,len(x)):
+        for l in range(0, len(x)):
             f.write(x[l].decode() + ', ')
     
         f.write('\n')
