@@ -19,20 +19,20 @@ def capture_to_learn():
     
         f.write('\n')
 
-        if(row_count >= 200):
-            break
+        #if(row_count >= 200):
+            #break
 
     f.close()
 
 
 def data_optimalizator():
     try:
-        fo = open('data1.txt', 'r')
+        fo = open('data2.txt', 'r')
     except:
         print('Failed to open file to optimalize')
     
     try:
-        fop = open('data_opt1.txt', 'w')
+        fop = open('data_opt2.txt', 'w')
     except:
         print('Failed to open file to write')
     
@@ -43,14 +43,17 @@ def data_optimalizator():
         splited.pop(3)
         splited.pop(1)
 
+        splited[0] = splited[0][0:-7]
         if(splited[3]== 'UDP,'):
             splited[3] = 'UDP'
+        splited[2] = splited[2][0:-1]
 
         for i in range(0, 4):
             fop.write(splited[i])
-            if(i<3):
+            if(i<4):
                 fop.write(';')
-
+                
+        fop.write('1')
         fop.write('\n')
         
     fop.close()
