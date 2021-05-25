@@ -3,7 +3,7 @@ import subprocess as sub
 def capture_to_learn():
     #otwieranie pliku do zapisu
     try:
-        f = open('data2.txt', 'w')
+        f = open('data4.txt', 'w')
     except:
         print('Failed to open file')
 
@@ -19,20 +19,17 @@ def capture_to_learn():
     
         f.write('\n')
 
-        #if(row_count >= 200):
-            #break
-
     f.close()
 
 
 def data_optimalizator():
     try:
-        fo = open('data2.txt', 'r')
+        fo = open('data3.txt', 'r')
     except:
         print('Failed to open file to optimalize')
     
     try:
-        fop = open('data_opt2.txt', 'w')
+        fop = open('data_testsdasd.txt', 'w')
     except:
         print('Failed to open file to write')
     
@@ -51,9 +48,9 @@ def data_optimalizator():
         for i in range(0, 4):
             fop.write(splited[i])
             if(i<4):
-                fop.write(';')
+                fop.write('.')
                 
-        fop.write('1')
+        #op.write('2')
         fop.write('\n')
         
     fop.close()
