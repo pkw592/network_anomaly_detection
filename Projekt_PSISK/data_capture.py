@@ -55,3 +55,32 @@ def data_optimalizator():
         
     fop.close()
     fo.close()
+
+def data_to_learn():
+    try:
+        fo = open('data_all.txt', 'r')
+    except:
+        print('Failed to open file to optimalize')
+    
+    try:
+        fop = open('data_all_ready.txt', 'w')
+    except:
+        print('Failed to open file to write')
+
+    lines = fo.readlines()
+
+    for line in lines:
+        splited = line.strip().split(sep=';')
+        splited.pop(0)
+        splited.pop(10)
+
+        for i in range(len(splited)):
+            fop.write(splited[i])
+            if(i<len(splited)-1):
+                fop.write(';')
+                
+        #op.write('2')
+        fop.write('\n')
+        
+    fop.close()
+    fo.close()
