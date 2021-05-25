@@ -96,7 +96,7 @@ def y_change():
         print('Failed to open file to optimalize')
     
     try:
-        fop = open('data_i1.txt', 'w')
+        fop = open('data_i2.txt', 'w')
     except:
         print('Failed to open file to write')
     
@@ -105,17 +105,11 @@ def y_change():
     for line in lines:
         splited = line.strip().split(sep=';')
 
-        if(splited[10] == '1'):
-            if(splited[0] == '192'):
-                splited[10] = '3'
-            elif(splited[0] != '192'):
-                splited[10] = '4'
-
         if(splited[10] == '2'):
-            if(splited[0] == '192'):
-                splited[10] = '5'
-            elif(splited[0] != '192'):
-                splited[10] = '6'
+            splited[10] = '1'
+        if(splited[10] == '1'):
+            splited[10] = '0'
+            
 
         for i in range(len(splited)):
             fop.write(splited[i])
@@ -144,15 +138,33 @@ def last_try():
     for line in lines:
         splited = line.strip().split(sep=';')
         
+        if(splited[10] == '3'):
+            splited[10] = '0'
+        if(splited[10] == '4'):
+            splited[10] = '0'
+        if(splited[10] == '5'):
+            splited[10] = '1'
+        if(splited[10] == '6'):
+            splited[10] = '1'
+
+
         for i in range(len(splited)):
             fop.write(splited[i])
             if(i == 0):
+                fop.write('.')
+            if(i == 1):
+                fop.write('.')
+            if(i == 2):
                 fop.write('.')
             if(i == 3):
                 fop.write(';')
             if(i == 4):
                 fop.write(';')
             if(i == 5):
+                fop.write('.')
+            if(i == 6):
+                fop.write('.')
+            if(i == 7):
                 fop.write('.')
             if(i == 8):
                 fop.write(';')
