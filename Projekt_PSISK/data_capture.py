@@ -24,12 +24,12 @@ def capture_to_learn():
 
 def data_optimalizator():
     try:
-        fo = open('data3.txt', 'r')
+        fo = open('data4.txt', 'r')
     except:
         print('Failed to open file to optimalize')
     
     try:
-        fop = open('data_testsdasd.txt', 'w')
+        fop = open('data_test4.txt', 'w')
     except:
         print('Failed to open file to write')
     
@@ -58,32 +58,31 @@ def data_optimalizator():
 
 def data_to_learn():
     try:
-        fo = open('data_all.txt', 'r')
+        fo = open('data_test4.txt', 'r')
     except:
         print('Failed to open file to optimalize')
     
     try:
-        fop = open('data_all_ready.txt', 'w')
+        fop = open('data_opt4_ready.txt', 'w')
     except:
         print('Failed to open file to write')
 
     lines = fo.readlines()
 
     for line in lines:
-        splited = line.strip().split(sep=';')
+        splited = line.strip().split(sep='.')
         splited.pop(0)
 
-        if(len(splited)<12):
+        if(len(splited)<11):
             continue
 
         splited.pop(10)
 
-        for i in range(len(splited)):
+        for i in range(len(splited)-1):
             fop.write(splited[i])
             if(i<len(splited)-1):
                 fop.write(';')
-                
-        #op.write('2')
+
         fop.write('\n')
         
     fop.close()
