@@ -72,6 +72,10 @@ def data_to_learn():
     for line in lines:
         splited = line.strip().split(sep=';')
         splited.pop(0)
+
+        if(len(splited)<12):
+            continue
+
         splited.pop(10)
 
         for i in range(len(splited)):
