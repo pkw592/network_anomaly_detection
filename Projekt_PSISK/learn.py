@@ -1,29 +1,36 @@
+from math import tanh
 import pandas as pd
 import tensorflow as tf
 from tensorflow import keras
 import numpy as np
+from keras.layers import Dense
+from sklearn.model_selection import train_test_split
 
-data = pd.read_csv('data_all_ready.txt', sep=';',dtype="float32")
 
-data = data[['ip1_1','ip1_2','ip1_3','ip1_4','ip1_port','ip2_1','ip2_2','ip2_3','ip2_4','ip2_port','good_or_not']]
+data = pd.read_csv('data_i1_heh.txt', sep=';',dtype="float32")
+
+data = data[['ip1','ip1_port','ip2','ip2_port','good_or_not']]
 
 predict = 'good_or_not'
 X = np.array(data.drop([predict], 1))
 y = np.array(data[predict])
 
-model = keras.Sequential()
-model.add(keras.layers.Embedding(88000, 16))
-model.add(keras.layers.GlobalAveragePooling1D())
-model.add(keras.layers.Dense(16, activation="relu"))
-model.add(keras.layers.Dense(1, activation="sigmoid"))
+x_train, x_test, y_train, y_test = train_test_split(X, y, test_size = 0.3, random_state = 0)
 
-model.summary()
+model = keras.Sequential()
+model.add(Dense(units=122,kernel_initializer='uniform',activation='relu'))
+model.add(Dense(units=122,kernel_initializer='uniform',activation='relu'))
+model.add(Dense(units=122,kernel_initializer='uniform',activation='relu'))
+model.add(Dense(units=122,kernel_initializer='uniform',activation='relu'))
+model.add(Dense(units=1,kernel_initializer='uniform',activation='sigmoid'))
 
 model.compile(optimizer="adam", loss="binary_crossentropy", metrics=["accuracy"])
 
 fit_model = model.fit(X, y,epochs=10,batch_size=512)
+
+#fit_model = model.fit(X, y,epochs=10,batch_size=512)
 result = model.evaluate(X,y)
 
 print(result)
 
-model.save('model.h5')
+model.save('model2.h5')

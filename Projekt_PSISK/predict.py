@@ -10,9 +10,20 @@ X = np.array(data)
 
 predict = model.predict(X)
 print(predict)
+
 for i in range(len(predict)):
-    if(predict[i][0]>1.1):
+    if(predict[i][0]>4.5 and predict[i][0]<5.5):
         print('Wykryto anomalie!\n')
+        print('Nieautoryzowany ruch wychodzący\n')
+        print('Adres IP źródła:')
+        print(int(X[i][0])+ '.' + int(X[i][1]) + '.' + int(X[i][2]) + '.' + int(X[i][3]))
+        print(' Na porcie:' + int(X[i][4]) + '\n')
+        print('Adres IP adresata:')
+        print(int(X[i][5])+ '.' + int(X[i][6]) + '.' + int(X[i][7]) + '.' + int(X[i][8]))
+        print(' Na porcie:' + int(X[i][10]) + '\n')
+    if(predict[i][0]>5.5 and predict[i][0]<6.5):
+        print('Wykryto anomalie!\n')
+        print('Nieautoryzowany ruch przychodzący\n')
         print('Adres IP źródła:')
         print(int(X[i][0])+ '.' + int(X[i][1]) + '.' + int(X[i][2]) + '.' + int(X[i][3]))
         print(' Na porcie:' + int(X[i][4]) + '\n')

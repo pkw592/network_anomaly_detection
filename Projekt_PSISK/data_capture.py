@@ -87,3 +87,78 @@ def data_to_learn():
         
     fop.close()
     fo.close()
+
+
+def y_change():
+    try:
+        fo = open('data_all_ready.txt', 'r')
+    except:
+        print('Failed to open file to optimalize')
+    
+    try:
+        fop = open('data_i1.txt', 'w')
+    except:
+        print('Failed to open file to write')
+    
+    lines = fo.readlines()
+
+    for line in lines:
+        splited = line.strip().split(sep=';')
+
+        if(splited[10] == '1'):
+            if(splited[0] == '192'):
+                splited[10] = '3'
+            elif(splited[0] != '192'):
+                splited[10] = '4'
+
+        if(splited[10] == '2'):
+            if(splited[0] == '192'):
+                splited[10] = '5'
+            elif(splited[0] != '192'):
+                splited[10] = '6'
+
+        for i in range(len(splited)):
+            fop.write(splited[i])
+            if(i<len(splited)-1):
+                fop.write(';')
+
+        fop.write('\n')
+        
+    fop.close()
+    fo.close()
+
+
+def last_try():
+    try:
+        fo = open('data_i1.txt', 'r')
+    except:
+        print('Failed to open file to optimalize')
+    
+    try:
+        fop = open('data_i1_heh.txt', 'w')
+    except:
+        print('Failed to open file to write')
+    
+    lines = fo.readlines()
+
+    for line in lines:
+        splited = line.strip().split(sep=';')
+        
+        for i in range(len(splited)):
+            fop.write(splited[i])
+            if(i == 0):
+                fop.write('.')
+            if(i == 3):
+                fop.write(';')
+            if(i == 4):
+                fop.write(';')
+            if(i == 5):
+                fop.write('.')
+            if(i == 8):
+                fop.write(';')
+            if(i == 9):
+                fop.write(';')
+        fop.write('\n')
+        
+    fop.close()
+    fo.close()
