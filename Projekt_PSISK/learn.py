@@ -10,11 +10,11 @@ from sklearn.metrics import f1_score
 from sklearn.metrics import precision_score
 from sklearn.metrics import confusion_matrix
 from sklearn.metrics import recall_score
+import matplotlib.pyplot as plt
 
+data = pd.read_csv('data_i2.txt', sep=';',low_memory=False)
 
-data = pd.read_csv('data_csv.txt', sep=';',low_memory=False)
-
-data = data[['ip_source','ip1_port','ip_destination','ip2_port','anomaly']]
+data = data[['ip1_1','ip1_2','ip1_3','ip1_4','ip1_port','ip2_1','ip2_2','ip2_3','ip2_4','ip2_port','anomaly']]
 
 predict = 'anomaly'
 X = np.array(data.drop([predict], 1))
@@ -32,20 +32,10 @@ model = RandomForestClassifier(n_estimators=100,max_depth=5,random_state=0,n_job
 model.fit(X_train, y_train)
 
 print(model)
-model.save('model2.h5')
 
 y_pred = model.predict(X_test)
 
-accuracy = accuracy_score(y_test, y_pred)
-print("accuracy:",accuracy)
-f1score=f1_score(y_test, y_pred)
-print("f1-acore:",f1score)
-cm=confusion_matrix(y_test, y_pred)
-print("confusion matrix:\n",cm)
-pr=precision_score(y_test,y_pred)
-print("Precision:",pr)
-rs=recall_score(y_test,y_pred)
-print("Recall_score:",rs)
-misclassified_samples = X_test[y_test != y_pred]
-mc=misclassified_samples.shape[0]
-print("Misclassified :",mc)
+print('dlugosc'+str(len(y_pred)))
+for i in range(len(y_pred)):
+    if(y_pred[i] == 1):
+        print("wykryto anomalie")
