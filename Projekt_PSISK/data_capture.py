@@ -3,7 +3,7 @@ import subprocess as sub
 def capture_to_learn():
     #otwieranie pliku do zapisu
     try:
-        f = open('data4.txt', 'w')
+        f = open('data_check.txt', 'w')
     except:
         print('Failed to open file')
 
@@ -18,18 +18,20 @@ def capture_to_learn():
             f.write(x[l].decode() + ', ')
     
         f.write('\n')
+        if (row_count >=200):
+            break
 
     f.close()
 
 
 def data_optimalizator():
     try:
-        fo = open('data4.txt', 'r')
+        fo = open('data_check.txt', 'r')
     except:
         print('Failed to open file to optimalize')
     
     try:
-        fop = open('data_test4.txt', 'w')
+        fop = open('data_optimalized.txt', 'w')
     except:
         print('Failed to open file to write')
     
@@ -50,7 +52,6 @@ def data_optimalizator():
             if(i<4):
                 fop.write('.')
                 
-        #op.write('2')
         fop.write('\n')
         
     fop.close()
@@ -58,16 +59,18 @@ def data_optimalizator():
 
 def data_to_learn():
     try:
-        fo = open('data_test4.txt', 'r')
+        fo = open('data_optimalized.txt', 'r')
     except:
         print('Failed to open file to optimalize')
     
     try:
-        fop = open('data_opt4_ready.txt', 'w')
+        fop = open('data_ready.txt', 'w')
     except:
         print('Failed to open file to write')
 
     lines = fo.readlines()
+
+    fop.write('ip1_1;ip1_2;ip1_3;ip1_4;ip1_port;ip2_1;ip2_2;ip2_3;ip2_4;ip2_port;anomaly')
 
     for line in lines:
         splited = line.strip().split(sep='.')
@@ -76,6 +79,7 @@ def data_to_learn():
         if(len(splited)<11):
             continue
 
+        #packet type removed
         splited.pop(10)
 
         for i in range(len(splited)-1):
@@ -83,93 +87,6 @@ def data_to_learn():
             if(i<len(splited)-1):
                 fop.write(';')
 
-        fop.write('\n')
-        
-    fop.close()
-    fo.close()
-
-
-def y_change():
-    try:
-        fo = open('data_all_ready.txt', 'r')
-    except:
-        print('Failed to open file to optimalize')
-    
-    try:
-        fop = open('data_i2.txt', 'w')
-    except:
-        print('Failed to open file to write')
-    
-    lines = fo.readlines()
-
-    for line in lines:
-        splited = line.strip().split(sep=';')
-
-        if(splited[10] == '2'):
-            splited[10] = '1'
-        if(splited[10] == '1'):
-            splited[10] = '0'
-            
-
-        for i in range(len(splited)):
-            fop.write(splited[i])
-            if(i<len(splited)-1):
-                fop.write(';')
-
-        fop.write('\n')
-        
-    fop.close()
-    fo.close()
-
-
-def last_try():
-    try:
-        fo = open('data_i1.txt', 'r')
-    except:
-        print('Failed to open file to optimalize')
-    
-    try:
-        fop = open('data_i1_heh.txt', 'w')
-    except:
-        print('Failed to open file to write')
-    
-    lines = fo.readlines()
-
-    for line in lines:
-        splited = line.strip().split(sep=';')
-        
-        if(splited[10] == '3'):
-            splited[10] = '0'
-        if(splited[10] == '4'):
-            splited[10] = '0'
-        if(splited[10] == '5'):
-            splited[10] = '1'
-        if(splited[10] == '6'):
-            splited[10] = '1'
-
-
-        for i in range(len(splited)):
-            fop.write(splited[i])
-            if(i == 0):
-                fop.write('.')
-            if(i == 1):
-                fop.write('.')
-            if(i == 2):
-                fop.write('.')
-            if(i == 3):
-                fop.write(';')
-            if(i == 4):
-                fop.write(';')
-            if(i == 5):
-                fop.write('.')
-            if(i == 6):
-                fop.write('.')
-            if(i == 7):
-                fop.write('.')
-            if(i == 8):
-                fop.write(';')
-            if(i == 9):
-                fop.write(';')
         fop.write('\n')
         
     fop.close()
