@@ -1,10 +1,7 @@
 import pandas as pd
-import tensorflow as tf
-from tensorflow import keras
 import numpy as np
 from keras.layers import Embedding, SimpleRNN, Dense
 from keras import Sequential
-from sklearn.model_selection import train_test_split
 
 #wczytanie pliku do nauki modelu
 data = pd.read_csv('data_i2.txt', sep=';',dtype='float')
