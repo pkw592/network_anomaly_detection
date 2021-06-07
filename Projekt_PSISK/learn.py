@@ -3,6 +3,7 @@ import numpy as np
 from keras.layers import Embedding, SimpleRNN, Dense
 from keras import Sequential
 
+
 #wczytanie pliku do nauki modelu
 data = pd.read_csv('data_i2.txt', sep=';',dtype='float')
 
@@ -31,4 +32,4 @@ model.compile(optimizer="adam", loss="binary_crossentropy", metrics=["accuracy"]
 fit_model = model.fit(X, y, epochs=10, batch_size=128, validation_split=0.2)
 
 #zapis modelu do pliku
-model.save("model.h5")
+#model.save("model.h5")
