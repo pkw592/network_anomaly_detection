@@ -6,7 +6,7 @@ import numpy as np
 model = keras.models.load_model('model.h5')
 
 #odczyt przygotowanego pliku
-data = pd.read_csv('data_opt3_ready.txt', sep=';',dtype='float')
+data = pd.read_csv('data_checker.txt', sep=';',dtype='float')
 
 #utworzenie tablicy danych do predykcji
 X = np.array(data)
