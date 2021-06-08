@@ -83,7 +83,7 @@ def data_to_learn():
     lines = fo.readlines()
 
     #zapis do pliku nagłówków kolumn dla lepszego czytania przez pakiet pandas
-    fop.write('ip1_1;ip1_2;ip1_3;ip1_4;ip1_port;ip2_1;ip2_2;ip2_3;ip2_4;ip2_port;anomaly')
+    fop.write('ip1_1;ip1_2;ip1_3;ip1_4\n')
 
     #odpowiednie podzielenie danych na kolumny w celu przygotowania do uczenia modelu
     for line in lines:
@@ -100,9 +100,10 @@ def data_to_learn():
         splited.pop(10)
 
         #zapis gotowych danych do pliku
-        for i in range(len(splited)-1):
+        for i in range(0,4):
+
             fop.write(splited[i])
-            if(i<len(splited)-1):
+            if(i<3):
                 fop.write(';')
 
         fop.write('\n')
