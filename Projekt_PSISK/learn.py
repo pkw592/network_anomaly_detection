@@ -3,7 +3,7 @@ import numpy as np
 from keras.layers import Embedding, SimpleRNN, Dense, GRU
 from keras import Sequential
 from pandas import factorize
-from sklearn.svm import OneClassSVM
+
 
 #wczytanie pliku do nauki modelu
 data = pd.read_csv('data_.txt', sep=';')
@@ -37,4 +37,4 @@ model.compile(optimizer="adam", loss="binary_crossentropy", metrics=["accuracy"]
 fit_model = model.fit(X, y, epochs=10, batch_size=128, validation_split=0.2)
 
 #zapis modelu do pliku
-model.save("model50.h5")
+model.save("model.h5")

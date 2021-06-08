@@ -12,10 +12,9 @@ data = data.drop_duplicates(['ip1_1','ip1_2','ip1_3','ip1_4'])
 
 #utworzenie tablicy danych do predykcji
 X = np.array(data)
-print(X)
+
 #predykcja wyników
 predict = model.predict(X)
-print(predict)
 
 #wypisywanie alertów o anomalii na podstawie przewidzianego wyniku 
 #(1 - anomalia, 0 - ruch normalny)
