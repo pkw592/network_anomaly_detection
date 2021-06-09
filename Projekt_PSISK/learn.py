@@ -2,8 +2,6 @@ import pandas as pd
 import numpy as np
 from keras.layers import Embedding, SimpleRNN, Dense, GRU
 from keras import Sequential
-from pandas import factorize
-
 
 #wczytanie pliku do nauki modelu
 data = pd.read_csv('data_.txt', sep=';')
@@ -14,12 +12,9 @@ data = data[['ip1_1','ip1_2','ip1_3','ip1_4','anomaly']]
 #utworzenie zmiennej zawierającej dane czy ruch jest właściwy
 predict = 'anomaly'
 
-#data = data.drop_duplicates(['ip1_1','ip1_2','ip1_3','ip1_4'])
-
 #utworzenie tablic danych do uczenia i wyników
 X = np.array(data.drop([predict], 1))
 y = np.array(data[predict])
-
 
 #utworzenie modelu używającego algorytmu prostych rekurencyjnych sieci neuronowych
 model = Sequential()
