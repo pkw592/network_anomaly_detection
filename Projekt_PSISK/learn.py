@@ -1,6 +1,6 @@
 import pandas as pd
 import numpy as np
-from keras.layers import Embedding, SimpleRNN, Dense, GRU
+from keras.layers import Embedding, SimpleRNN, Dense
 from keras import Sequential
 
 #wczytanie pliku do nauki modelu
