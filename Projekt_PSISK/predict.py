@@ -3,7 +3,7 @@ import pandas as pd
 import numpy as np
 
 #zaimportowanie zapisanego modelu
-model = keras.models.load_model('model99.h5')
+model = keras.models.load_model('model.h5')
 
 #odczyt przygotowanego pliku
 data = pd.read_csv('data_test.txt', sep=';')
